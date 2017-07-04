@@ -1,6 +1,7 @@
 import React, { cloneElement, PropTypes } from 'react';
-import { WebView, NativeModules } from 'react-native';
-import requireNativeComponent from 'requireNativeComponent';
+import { WebView, NativeModules, requireNativeComponent } from 'react-native';
+
+var RCT_WEBVIEW_REF = 'webview';
 
 class X5WebView extends WebView {
     static getX5CoreVersion = function (cb: Function): Promise {
@@ -18,6 +19,7 @@ class X5WebView extends WebView {
         const [webview,...children] = wrapper.props.children;
         const X5webview = (
             <RNX5WebView
+                ref={ RCT_WEBVIEW_REF }
                 {...webview.props}
             />
         );
